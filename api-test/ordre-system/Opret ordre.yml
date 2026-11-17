@@ -10,11 +10,17 @@ http:
     type: json
     data: |-
       {
-         "kunde_id": 22,
-         "ordrelinjer": [
-        { "produkt_id": 21, "antal": 4 },
-        { "produkt_id": 44, "antal": 1 }
-          ]
+        "kunde_id": 22,
+        "ordrelinjer": [
+          {
+            "produkt_id": 21,
+            "antal": 4
+          },
+          {
+            "produkt_id": 44,
+            "antal": 1
+          }
+        ]
       }
   auth: inherit
 

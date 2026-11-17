@@ -1,32 +1,22 @@
-import ordreLinje from "./ordrelinje.js";
+import * as produktRepository from './produkt.repository.js';
 
 export async function opretOrdre( ordreData ) {
-  console.log("Opret ordre i service");
+  // 1. find ordrelinjer i ordredata
+// 2. for hver ordrelinje
+// 3. find produktet i den ordrelinje (produkt_id)
+// 4. find det produkts stykpris
+// 5. opret et Ordrelinje objekt med produkt, antal, og stykpris
+const ordreLinjer = [];
 
-  // console.log(ordreData);
+for( const linjeData of ordreData.ordrelinjer) {
+const produkt = await produktRepository.getById(linjeData.produkt_id);
+const ordreLinje = new OrdreLinje(produkt.produkt_id,
+linjeData. antal, produkt.pris);
+ordreLinjer.push (ordreLinje);
 
-  const ordreLinjeData = ordreData.ordreLinjer [0]; 
-  console.log("Linje 1", ordreLinje1Data);
+}
 
-//fisk produkt_id og antal ud fra ordreLinjeData
-//? hvad med pris? skal den hentes fra produktet eller sendes med i ordreLinjeData?
+const ordre = new Ordre (ordreData.kunde_id, ordreLinjer);
 
-
-const productId = ordreLinjeData.productId;
-const quantity = ordreLinjeData.quantity;
-
-// const price = ____________; 
-
-//find product in database by productId and get price from there
-//lav stykpris variable med produktets stykpris
-
-const ordreLinje1 = new ordreLinje({ productId, quantity, price });
-
-console.log("Ordrelinje 1", ordreLinje1);
-
-  //  const ordreLinje1 = new OrdreLinje (21, 4, 12.95)
-  //  const ordreLinje2 = new OrdreLinje (44,  1, 49.95)
-
-  //  ordreRepository.create(ordre);
-
+console.log(ordre);
 }
