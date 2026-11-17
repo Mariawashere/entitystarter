@@ -3,7 +3,7 @@ import ordreLinje from "./ordrelinje.js";
 export async function opretOrdre( ordreData ) {
   console.log("Opret ordre i service");
 
-  console.log(ordreData);
+  // console.log(ordreData);
 
   const ordreLinjeData = ordreData.ordreLinjer [0]; 
   console.log("Linje 1", ordreLinje1Data);
@@ -15,7 +15,7 @@ export async function opretOrdre( ordreData ) {
 const productId = ordreLinjeData.productId;
 const quantity = ordreLinjeData.quantity;
 
-const price = ____________; 
+// const price = ____________; 
 
 //find product in database by productId and get price from there
 //lav stykpris variable med produktets stykpris
