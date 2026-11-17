@@ -1,0 +1,25 @@
+info:
+  name: Opret ordre
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:3000/ordrer
+  body:
+    type: json
+    data: |-
+      {
+         "kunde_id": 22,
+         "ordrelinjer": [
+        { "produkt_id": 21, "antal": 4 },
+        { "produkt_id": 44, "antal": 1 }
+          ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
