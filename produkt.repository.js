@@ -2,12 +2,16 @@ import db from './db.js'
 import Produkt from './produkt.js';
 
 export async function getAll() {
-  const productRows = await db.query(/*SQL*/ `SELECT produkt_id, ean, produkter.navn, pris, kategori_navn AS kategori
-    FROM produkter 
-    JOIN kategorier 
-    ON produkter.kategori_id = kategorier.kategori_id
-    ORDER BY kategori ASC`);
+  const productRows = await db.query(/*SQL*/ `SELECT produkt_id, ean, produkter.navn, pris, kategorier.navn AS kategori
+    FROM produkter
+    JOIN kategorier
+    ON produkter.kategori_id = kategorier.id
 
+    ORDER BY kategori ASC, navn DESC
+
+    LIMIT 10
+    OFFSET 20
+    `);
   
   const products = productRows.rows.map( row => new Produkt(row));
 
