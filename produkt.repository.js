@@ -2,7 +2,7 @@ import db from './db.js'
 import Produkt from './produkt.js';
 
 export async function getAll() {
-  const productRows = await db.query("SELECT * FROM produkter");
+  const productRows = await db.query("SELECT * FROM produkter ORDER BY navn ASC");
   
   const products = productRows.rows.map( row => new Produkt(row));
 
