@@ -1,7 +1,7 @@
 import "dotenv/config";
-import db from "db";
+import pg from "pg";
 
-export default new db.Pool({
+export default new pg.Pool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   database: process.env.DB_DATABASE,
