@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import * as ordreController from './ordre.controller.js';
 import * as produktController from './produkt.controller.js';
 
@@ -6,6 +7,7 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
